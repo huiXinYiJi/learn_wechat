@@ -1,0 +1,32 @@
+/* pages/test/test.wxss */
+.my-class{
+  color:green;
+}
+
+/*scroll-view使用*/
+.scroll-view-item{
+  width:100px;
+  height:100px;
+}
+.green{
+  background-color: green;
+}
+.red{
+  background-color: red;
+}
+.yellow{
+  background-color: yellow;
+}
+.blue{
+  background-color: blue;
+}
+.orange{
+  background-color: orange;
+}
+.scroll-view-x{
+  white-space: nowrap;
+  /* display:flex; */
+}
+.scroll-view-x .scroll-view-item{
+  display:inline-block;
+}

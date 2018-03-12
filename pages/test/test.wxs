@@ -1,0 +1,8 @@
+var foo= "hello world from test.wxs";
+var bar = function(d){
+  return d;
+}
+module.exports={
+  foo:foo,
+  bar:bar
+}

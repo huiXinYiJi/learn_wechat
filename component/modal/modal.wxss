@@ -1,0 +1,8 @@
+/* component/modal/modal.wxss */
+/* .wrapper{
+  color:red;
+} */
+/*组件节点的默认样式*/
+:host{
+  color:yellow;
+}

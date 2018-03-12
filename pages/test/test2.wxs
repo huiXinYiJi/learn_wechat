@@ -1,0 +1,2 @@
+var test =  require('./test.wxs');
+// console.log(test.foo);

@@ -1,0 +1,26 @@
+{
+  "pages": [
+    "pages/test/test",
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "hui",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/test/test",
+        "text": "test"
+      }
+    ],
+    "position": "bottom"
+  }
+}

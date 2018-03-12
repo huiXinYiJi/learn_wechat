@@ -1,0 +1,134 @@
+<!--pages/test/test.wxml-->
+<view>
+  <text>test页面</text>
+</view>
+
+<!-- start swiper滑块 -->
+<view>swiper示例</view>
+<swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="duration">
+  <block wx:for="{{imgUrls}}" wx:key="*this">
+    <swiper-item>
+      <image src="{{item}}" class="slide-image" width="355" height="150"/>
+    </swiper-item>
+  </block>
+</swiper>
+<button bindtap="changeIndicatorDots">indicator-dots</button>
+<button bindtap="changeAutoplay">autoplay</button>
+<slider bindchange="intervalChange" show-value min="500" max="2000"/>interval
+<slider bindchange="durationChange" show-value min="1000" max="10000"/>duration
+
+<!-- swiper滑块 end -->
+
+<!-- 可滚动视图区域 -->
+<view>
+  <view>垂直滚动</view>
+  <scroll-view scroll-y style="height:200px;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+    <view id="green" class="scroll-view-item green"></view>
+    <view id="red" class="scroll-view-item red"></view>
+    <view id="yellow" class="scroll-view-item yellow"></view>
+    <view id="blue" class="scroll-view-item blue"></view>
+    <view id="orange" class="scroll-view-item orange"></view>
+  </scroll-view>
+
+  <view class="btn-area">
+    <button size="mini" bindtap="tap">click me to scroll into view</button>
+    <button size="mini" bindtap="tapMove">click me to scroll</button>
+  </view>
+
+  <view>横向滚动</view>
+  <scroll-view scroll-x style="width:100%;" class="scroll-view-x">
+    <view id="green" class="scroll-view-item green"></view>
+    <view id="red" class="scroll-view-item red"></view>
+    <view id="yellow" class="scroll-view-item yellow"></view>
+    <view id="blue" class="scroll-view-item blue"></view>
+    <view id="orange" class="scroll-view-item orange"></view>
+  </scroll-view>
+
+</view>
+
+<view hover-class='my-class' hover-start-time="50" hover-stay-time="1000">示例</view>
+
+
+<!-- 组件的使用 -->
+<view>
+  <component-modal class='my-class' bind:myevent='onMyEvent'>
+    <!-- 这部分内容将被放置在组件 <slot> 的位置上 -->
+    <!-- <view>这里是插入到组件slot中的内容</view>  -->
+    <view slot="before">组件slot name="before"中的内容</view>
+    <view slot="after">组件slot name="after"中的内容</view>
+  </component-modal>
+</view>
+
+<!-- wxs time类型 -->
+<view>{{myTime}}</view>
+
+<!-- wxs使用 -->
+<wxs src="./test.wxs" module="test"></wxs>
+<view>{{test.foo}},{{test.bar(9)}}</view>
+<wxs src="./test2.wxs" module="test2"></wxs>
+
+<wxs module="sample">
+  //var arr=2;
+  //console.log(1);
+  var now = getDate();
+  //console.log(now);
+
+  var a = getRegExp("x", "img");
+  /*console.log(a.source);
+  console.log(1,"x" === a.source);
+  console.log(2,true === a.global);
+  console.log(3,true === a.ignoreCase);
+  console.log(4,true === a.multiline);*/
+</wxs>
+
+<!-- 事件的使用 -->
+<view id="tapTest" data-hi-type="WeChat" bindtap='tapName'>Click me!</view>
+
+<!-- 模板的使用 -->
+<template name="msgItem">
+  <view>
+    <text>{{index}}: {{msg}}</text>
+    <text>Time: {{time}}</text>
+    <text>{{test.foo}}</text>
+  </view>
+</template>
+<template name="another">
+  <view>another</view>
+</template>
+
+<template is="{{item.index==0?'msgItem':'another'}}" data="{{...item}}" />
+
+<switch wx:for="{{ObjArr}}" wx:key="unique">{{item.id}}</switch>
+<button bindtap="switch">Switch</button>
+<button bindtap="addToFront">Add to the front</button>
+<switch wx:for="{{numberArr}}" wx:key="*this">{{item}}</switch>
+<button bindtap="addNumberToFront">Add number to the front</button>
+
+
+<!-- 九九乘法表 -->
+<view wx:for="{{[1,2,3,4,5,6,7,8,9]}}" wx:key="*this" wx:for-item="i">
+  <view wx:for="{{[1,2,3,4,5,6,7,8,9]}}" wx:key="*this" wx:for-item="j">
+    <view wx:if="{{i<=j}}">
+      {{i}}*{{j}} = {{i*j}}
+    </view>
+  </view>
+</view>
+
+<!-- block上使用控制属性包裹多个标签 -->
+<block wx:if="{{true}}">
+  <view>view 1</view>
+  <view>view 2</view>
+</block>
+
+<!-- wx:for 与 wx:key的结合使用 -->
+<view wx:for="array" wx:key="*this">
+  {{item}}
+</view>
+
+<view wx:for="{{[1,2,3]}} " wx:key="*this">
+  {{item}}
+</view>
+
+<view wx:for="{{[1,2,3]}}" wx:key="*this">
+  {{item}}
+</view>

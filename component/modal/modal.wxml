@@ -1,0 +1,8 @@
+<!--component/modal/modal.wxml-->
+<!-- 组件模板 -->
+<view class="wrapper">
+  <button bindtap='onTap'>点击触发‘myevent’事件</button>
+  <slot name="before"></slot>
+  <view>这里是组件的内部节点</view>
+  <slot name="after"></slot>
+</view>
